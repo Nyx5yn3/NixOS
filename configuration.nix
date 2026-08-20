@@ -42,6 +42,10 @@
     LC_TELEPHONE = "es_VE.UTF-8";
     LC_TIME = "es_VE.UTF-8";
   };
+#====================================
+# ONLY FOR VM PORTAPAPELES
+services.spice-vdagentd.enable = true;
+
 
 # =====================================
 #	ONLY IF YOU ARE RUNNING FROM VM
