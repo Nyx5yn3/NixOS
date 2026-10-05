@@ -8,6 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
+      ./security.nix
     ];
 
   # Bootloader.
@@ -42,10 +44,6 @@
     LC_TELEPHONE = "es_VE.UTF-8";
     LC_TIME = "es_VE.UTF-8";
   };
-#====================================
-# ONLY FOR VM PORTAPAPELES
-services.spice-vdagentd.enable = true;
-
 
 # =====================================
 #	ONLY IF YOU ARE RUNNING FROM VM
@@ -112,6 +110,10 @@ programs.xfconf.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+# ==========================
+#	HOME MANAGER
+# ==========================
+home-manager.users."syne" = import ./home.nix;
 
 # =============================================================================================
 #  PKGS
@@ -134,12 +136,15 @@ programs.xfconf.enable = true;
     lxappearance
     xfce.xfce4-panel
     xfce.xfce4-whiskermenu-plugin
+    btop
+    autotiling
   ];
 # ==========================================================================================
 #	ALIASES
 # ==========================================================================================
   environment.shellAliases = {
 	NRS = "sudo nixos-rebuild switch";
+	neofetch = "fastfetch";
   };
 # ==========================================================================================
 
