@@ -69,8 +69,8 @@ programs.xfconf.enable = true;
     variant = "";
    };
 
-#LightDM
-  services.xserver.displayManager.lightdm.enable = true;
+#Ly
+  services.displayManager.ly.enable = true;
   
 #i3
   services.xserver.windowManager.i3 = {
@@ -144,6 +144,7 @@ home-manager.users."syne" = import ./home.nix;
 # ==========================================================================================
   environment.shellAliases = {
 	NRS = "sudo nixos-rebuild switch";
+	clean = "sudo nix-collect-garbage -d";
 	neofetch = "fastfetch";
   };
 # ==========================================================================================
