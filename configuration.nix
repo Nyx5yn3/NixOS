@@ -68,11 +68,29 @@ programs.xfconf.enable = true;
     layout = "latam";
     variant = "";
    };
+######################
+#   LY and Console 
+#####################
 
-#Ly
-  services.displayManager.ly.enable = true;
-  
+  console = {
+	font = "Lat2-Terminus16"; 
+  };
+
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      animate = true;
+      animation = "1"; #matrix rain, might delete later
+      box_title = " Welcome back Syne "; 
+      hide_borders = false;        
+      clear_password = true;       
+    };
+  };
+
+
+########
 #i3
+########
   services.xserver.windowManager.i3 = {
 	enable = true;
 	extraPackages = with pkgs; [
