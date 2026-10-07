@@ -139,11 +139,9 @@ home-manager.users."syne" = import ./home.nix;
 # $ nix search wget
 # =============================================================================================
 
-  environment.systemPackages = with pkgs; [
-    vim 
+  environment.systemPackages = with pkgs; [ 
     wget
     fastfetch
-    neovim
     alacritty
     git
     firefox
@@ -194,7 +192,7 @@ home-manager.users."syne" = import ./home.nix;
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   
   # ========================================================================================
-  #	FONTS (La ia me dijo que la pusiera aqui)
+  #	FONTS 
   # ========================================================================================
    fonts.packages = with pkgs; [
 	nerd-fonts.jetbrains-mono
