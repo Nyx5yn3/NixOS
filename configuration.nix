@@ -95,7 +95,6 @@ programs.xfconf.enable = true;
 	enable = true;
 	extraPackages = with pkgs; [
 		rofi
-		i3status
 		i3lock
 	];
   };
@@ -150,8 +149,6 @@ home-manager.users."syne" = import ./home.nix;
     xdg-user-dirs	
     arc-theme
     lxappearance
-    xfce.xfce4-panel
-    xfce.xfce4-whiskermenu-plugin
     btop
     autotiling
   ];
@@ -162,6 +159,7 @@ home-manager.users."syne" = import ./home.nix;
 	NRS = "sudo nixos-rebuild switch";
 	clean = "sudo nix-collect-garbage -d";
 	neofetch = "fastfetch";
+    snvim = "sudo -E nvim";
   };
 # ==========================================================================================
 
