@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     ripgrep
     fd
+    imv
   ];
 
   programs.neovim = {
@@ -51,6 +52,11 @@
     '';
   };
 
+    #Yazi
+    programs.yazi = {
+    enable = true;
+    enableBashIntegration = true;
+    };
 
   programs.starship = {
     enable = true;
@@ -118,6 +124,8 @@ config = {
   bindsym Mod4+Shift+k move down
   bindsym Mod4+Shift+l move up
   bindsym Mod4+Shift+ntilde move right
+  
+  bindsym Mod4+n exec alacritty -e yazi
   '';
 };
 
