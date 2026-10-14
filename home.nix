@@ -62,9 +62,68 @@
     enable = true;
   };
   
-  # =============================
-  #    POLYBAR 
-  # ===========================
+# ============================
+#   i3  
+# ============================
+xsession.windowManager.i3 = {
+enable = true;
+
+config = {
+  modifier = "Mod4"; #Super key 
+  terminal = "alacritty";
+  menu = "rofi -show drun";
+
+  bars = [ ];
+  
+  fonts = {
+    names = [ "JetBrainsMono Nerd Font" ];
+    size = 12.0;
+  };
+
+  window = {
+    border = 1;
+    titlebar = false;
+  };
+
+  startup = [
+    { command = "dex --autostart --environment i3"; notification = false; }
+    { command = "xss-lock --transfer-sleep-lock -- i3lock --nofork"; notification = false; }
+    { command = "nm-applet"; notification = false; }
+    { command = "feh --bg-fill ~/Downloads/edgy.png"; always = true; notification = false; }
+    { command = "picom -b"; always = true; notification = false; }
+    { command = "spice-vdagent"; always = true; notification = false; }
+    { command = "autotiling"; always = true; notification = false; }
+    { command = "systemctl --user restart polybar.service"; always = true; notification = false; }
+    { command = "i3-msg workspace 1"; always = true; notification = false; }
+  ];
+};
+  extraConfig = ''
+  # Audio
+  bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+  bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+  bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+  bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+  # Movimiento y ventanas (Tus atajos personalizados)
+  floating_modifier Mod4
+  tiling_drag modifier titlebar
+  bindsym Mod4+q kill
+  
+  bindsym Mod4+j focus left
+  bindsym Mod4+k focus down
+  bindsym Mod4+l focus up
+  bindsym Mod4+ntilde focus right
+
+  bindsym Mod4+Shift+j move left
+  bindsym Mod4+Shift+k move down
+  bindsym Mod4+Shift+l move up
+  bindsym Mod4+Shift+ntilde move right
+  '';
+};
+
+# =============================
+#    POLYBAR 
+# ===========================
   services.polybar = {
     enable = true;
     
@@ -102,16 +161,24 @@
         type = "internal/i3";
         format = "<label-state> <label-mode>";
         
-        label-focused = "%name%";
+        strip-wsnumbers = true;
+        
+        ws-icon-0 = "1;"; 
+        ws-icon-1 = "2;"; 
+        ws-icon-2 = "3;"; 
+        ws-icon-3 = "4;"; 
+        ws-icon-default = ""; 
+        
+        label-focused = "%icon%";
         label-focused-foreground = "#7aa2f7";
         label-focused-underline = "#7aa2f7";
         label-focused-padding = 2;
         
-        label-unfocused = "%name%";
+        label-unfocused = "%icon%";
         label-unfocused-foreground = "#565f89";
         label-unfocused-padding = 2;
         
-        label-urgent = "%name%";
+        label-urgent = "%icon%";
         label-urgent-foreground = "#f7768e";
         label-urgent-padding = 2;
       };
